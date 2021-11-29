@@ -1,6 +1,15 @@
 const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
 const app = express();
 const port = 3001;
+const { MONGODB_URL } = process.env;
+
+try {
+    mongoose.connect(MONGODB_URL, { useNewUrlParser: true})
+} catch (error) {
+    console.error(error)
+}
 
 // Middleware
 app.use(express.json())
