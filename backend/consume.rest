@@ -1,7 +1,11 @@
 GET http://localhost:3001
 ###
 
-GET http://localhost:3001/login
+### Get user by username
+GET http://localhost:3001/users/username/anyuru
+
+
+POST http://localhost:3001/login
 
 
 ### The below won't work because we;ve not defined the post method  for the endpoint 
