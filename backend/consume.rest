@@ -4,14 +4,17 @@ GET http://localhost:3001
 ### Get user by username
 GET http://localhost:3001/users/username/anyuru
 
+### GET user by id 
+GET http://localhost:3001/users/id/
 
+###
 POST http://localhost:3001/login
 
 
-### The below won't work because we;ve not defined the post method  for the endpoint 
+### The below won't work because we've not defined the post method  for the endpoint 
 POST http://localhost:3001
 
-### But the below will work becuse we;ve defined the endpoint /register
+### But the below will work because we've defined the endpoint /register
 POST  http://localhost:3001/register
 Content-Type: application/json
 
@@ -21,7 +24,7 @@ Content-Type: application/json
 }
 
 ### DELETE Request
-DELETE http://localhost:3001/users/15
+DELETE http://localhost:3001/users/15, 16, 17
 
 ### PUT Request
 PUT http://localhost:3001/users/

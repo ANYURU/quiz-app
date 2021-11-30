@@ -23,32 +23,37 @@ app.get('/', (req, res)=>{
 
 app.use('/users', routerUser)
 
-
 app.post('/login', async (req, res) => {
+    res.json({'message': 'under development'})
+})
 
-    const User = await user.getUser('anyuru');
-    if(User !== null) return res.json({
-        'result': 'success', 
-        'message': 'Login Successful'
-    });
+// app.post('/login', async (req, res) => {
 
-    return res.json({
-        'result':'failure',
-        'message': 'Login Failed'
-    })
-});
+//     const User = await user.getUser('anyuru');
+//     if(User !== null) return res.json({
+//         'result': 'success', 
+//         'message': 'Login Successful'
+//     });
+
+//     return res.json({
+//         'result':'failure',
+//         'message': 'Login Failed'
+//     })
+// });
 
 app.post('/register',async (req, res) => {
     // Register logic
     // console.log(req.body)
-    try {
-        const { username, password } = req.body;
-        const User = new user({username, password});
-        await User.save()
+    const { username, password } = req.body;
 
-        if(User !== null) return res.json({
+    try {
+        const user = new User({username, password});
+        await user.save()
+
+        if(user !== null) return res.json({
             'result': 'success',
-            'message': 'Register Successful'
+            'message': 'Register Successful',
+            'user': user
         })
         
         return res.json({
@@ -114,6 +119,7 @@ app.patch('/users/:id', (req, res) => {
     console.log('Old user', user)
 
     const { username } = req.body
+    
     if(user.id == id){
         user.username = username
         res.json({
