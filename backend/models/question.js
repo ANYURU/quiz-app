@@ -9,7 +9,7 @@ const questionSchema = mongoose.Schema({
             type: String,
             required: true,
         },
-        AllowedStudents: [String]
+        allowedStudents: []
     },
     question: {
         unique: 1,
@@ -28,8 +28,14 @@ const questionSchema = mongoose.Schema({
         answer: [],
         typeOfAnswer: { type: String },
         author: String,
-        timeLimit: {type: Number, required: 1},
-        category: {type: String, required=1},
+        timeLimit: { 
+            type: Number, 
+            required: 1
+        },
+        category: { 
+            type: String,
+            required: 1
+        },
         isRequired: Boolean,
         platform: String,
         score: Number,
