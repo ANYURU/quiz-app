@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const testSchema = mongoose.Schema({
+const examSchema = mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
@@ -77,29 +77,21 @@ const testSchema = mongoose.Schema({
     
 })
 
-test.statics.getTests = (author = null) => {
-    return author !== null ? test.find({ author: author }) : test.find()
+exam.statics.getExams = (author = null) => {
+    return author !== null ? exam.find({ author: author }) : exam.find()
 }
-test.statics.getTest = (testId) => {
-    return test.findOne({ _id: testId })
-}
-
-test.statics.update = (data) => {
-    return test.findOneAndUpdate({ _id: data._id }, data)
+exam.statics.getExam = (examId) => {
+    return exam.findOne({ _id: examId })
 }
 
-test.statics.delete = (testId) => {
-    return test.findOneAndDelete({ _id: testId })
+exam.statics.update = (data) => {
+    return exam.findOneAndUpdate({ _id: data._id }, data)
 }
 
-test.statics.getQuestions = (testId) => {
-    return test.find({ _id: testId })
+exam.statics.delete = (testId) => {
+    return exam.findOneAndDelete({ _id: testId })
 }
 
-test.statics.getQuestion = (testId, questionId) => {
-    return test.findOne({ _id: testId, questions: { $elemMatch: { number: questionId } } })
-}
-
-const test = mongoose.model('question', testSchema)
-module.exports = test
+const exam = mongoose.model('Exam', testSchema)
+module.exports = exam
 
