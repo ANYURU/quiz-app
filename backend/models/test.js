@@ -1,81 +1,80 @@
 const mongoose = require('mongoose')
 
 const testSchema = mongoose.Schema({
-    test: {
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
+    author: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true,
+    },
+    allowedStudents: [],
+    questions: {
+        type: Array,
+        number: {
+            type: Number,
+            required: true,
+            unique: true
+        },
+        elementType: { type: String },
         createdAt: {
             type: Date,
             default: Date.now()
         },
-        author: {
+        label: {
             type: String,
-            required: true
+            required: 1
         },
-        title: {
+        choices: [],
+        answerForChoices: [],
+        potentialAnswersForTextAreaInput: [],
+        radioQuestionAnswer: {
+            type: String
+        },
+        author: String,
+        timeLimit: {
+            type: Number,
+        },
+        category: {
             type: String,
-            required: true,
+            required: 1
         },
-        allowedStudents: [],
-        questions: {
+        isRequired: Boolean,
+        platform: String,
+        score: Number,
+        expireAt: {
+            type: Date,
+        },
+        responses: {
             type: Array,
-            number: {
-                type: Number,
-                required: true,
-                unique: true
-            },
-            elementType: { type: String },
             createdAt: {
                 type: Date,
-                default: Date.now()
+                default: Date.now,
+                required: 1
             },
-            label: {
+            studentId: {
                 type: String,
                 required: 1
             },
-            choices: [],
-            answerForChoices: [],
-            potentialAnswersForTextAreaInput: [],
-            radioQuestionAnswer: {
-                type: String
+            status: {
+                type: Boolean
             },
-            author: String,
-            timeLimit: {
+            duration: {
                 type: Number,
+                required: 1,
             },
-            category: {
-                type: String,
-                required: 1
-            },
-            isRequired: Boolean,
-            platform: String,
             score: Number,
-            expireAt: {
-                type: Date,
-            },
-            responses: {
-                type: Array,
-                createdAt: {
-                    type: Date,
-                    default: Date.now,
-                    required: 1
-                },
-                studentId: {
-                    type: String,
-                    required: 1
-                },
-                status: {
-                    type: Boolean
-                },
-                duration: {
-                    type: Number,
-                    required: 1,
-                },
-                score: Number,
-                reviewer: String,
-                remarks: String,
-                rating: Number
-            }
+            reviewer: String,
+            remarks: String,
+            rating: Number
         }
     }
+    
 })
 
 test.statics.getTests = (author = null) => {

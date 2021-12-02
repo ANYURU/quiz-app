@@ -1,10 +1,7 @@
 const express = require('express');
-// const mongoose = require('mongoose');
-
 require('dotenv').config();
 const dbConnect = require('./config/db')
-const User = require('./models/user')
-const routerUser = require('./config/db')
+const routerUser = require('./routes/user')
 try {
     dbConnect
 } catch (error) {
