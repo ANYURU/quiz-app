@@ -57,12 +57,13 @@ const examSchema = mongoose.Schema({
                 default: Date.now,
                 required: 1
             },
+            answer: String,
             studentId: {
                 type: String,
                 required: 1
             },
             status: {
-                type: Boolean
+                type: String
             },
             duration: {
                 type: Number,
