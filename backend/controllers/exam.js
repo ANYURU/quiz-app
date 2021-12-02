@@ -1,0 +1,1 @@
+const examModel = require('../models/exam')
